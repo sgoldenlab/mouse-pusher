@@ -1,2 +1,2 @@
-# mouse-pusher
+# Mouse Pusher
 Mouse pusher
