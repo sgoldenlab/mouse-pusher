@@ -1,7 +1,13 @@
-# Mouse Pusher
-Mouse pusher
+# Mouse Pusher 
 
 Mouse pusher is a complementary mechanical device for the med-pc operant boxes, to replace manual labor when propelling mice into the experiment arena.  Potentially, by freeing researcher from pushing multiple mice at the same time, the mouse pusher can improve efficiency and accuracy of the procedures and even reduce the audience effect on the mice. This design were tested in the aggression protocol at the Golden Lab UW.  
+
+demonstration video 
+
+
+
+https://user-images.githubusercontent.com/50497030/128563699-18b8701d-70c7-49fd-a3ca-df1fa9bf6b25.mp4
+
 
 
 1. wiring diagram of linear rail
@@ -15,7 +21,10 @@ components list
 
 
 <img src="https://user-images.githubusercontent.com/50497030/128560163-14e39093-8887-4fcd-acfa-9625174d9f88.jpeg" width="500" height="200">
-![L298N-Motor-Driver-Module-Pinout](https://user-images.githubusercontent.com/50497030/128560178-6c45ff88-263f-42a5-8d72-34e5c1ec1af2.png)
+
+<img src="https://user-images.githubusercontent.com/50497030/128561183-06ac6fb2-cab5-46e3-85cc-d66e5610e60a.png" width="500" height="350">
+
+
 
 
 | Pin Name    | Description |
@@ -32,7 +41,68 @@ components list
 
 
 
-2. arduino and med-pc code 
+2. Code
+
+
+Arduino code
+```
+#include<Stepper.h>
+int Stepsperrev = 200;
+int motSpeed = 600;
+Stepper Nema(Stepsperrev, 8,9,10,11);
+int readPin = A3;
+int V2 = 0 ;
+
+
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Nema.setSpeed( motSpeed ) ;
+}
+
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  V2 = analogRead(A3);
+  
+  if (V2 == 1023 || V2 == 0 ){
+  digitalWrite(8,LOW);
+  digitalWrite(9,LOW);
+  digitalWrite(10,LOW);
+  digitalWrite(11,LOW);
+  Serial.print(V2);
+  
+  }
+  else {
+   Serial.print(V2);
+    digitalWrite(8,HIGH);
+    digitalWrite(9,HIGH);
+    digitalWrite(10,HIGH);
+    digitalWrite(11,HIGH);
+  
+    Nema.step(Stepsperrev * 103);
+    delay(5000);
+    Nema.step(Stepsperrev * -103);
+   
+    digitalWrite(8,LOW);
+    digitalWrite(9,LOW);
+    digitalWrite(10,LOW);
+    digitalWrite(11,LOW);
+    delay(170000);
+  }    
+  
+  delay(2000);
+}
+
+```
+
+Med-PC code
+
+
+```
+```
 
 
 3. stl model explanation
