@@ -14,6 +14,8 @@ components list
 - screws (based on your linear stage rail requirement) 
 
 wiring disgram
+
+
 ![download](https://user-images.githubusercontent.com/50497030/128560163-14e39093-8887-4fcd-acfa-9625174d9f88.jpeg)
 ![L298N-Motor-Driver-Module-Pinout](https://user-images.githubusercontent.com/50497030/128560178-6c45ff88-263f-42a5-8d72-34e5c1ec1af2.png)
 
@@ -32,6 +34,8 @@ wiring disgram
 
 
 
-2. arduino and med-pc code  
+2. arduino and med-pc code 
+
+
 3. stl model explanation
 4. warning: truning off when not using, especially before closing operant box (might cause pusheing when gate closed), secure linear rail 
