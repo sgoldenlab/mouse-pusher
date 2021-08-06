@@ -15,6 +15,7 @@ components list
 
 
 ![download](https://user-images.githubusercontent.com/50497030/128560163-14e39093-8887-4fcd-acfa-9625174d9f88.jpeg)
+<img src="https://user-images.githubusercontent.com/50497030/128560163-14e39093-8887-4fcd-acfa-9625174d9f88.jpeg" width="80" height="80">
 ![L298N-Motor-Driver-Module-Pinout](https://user-images.githubusercontent.com/50497030/128560178-6c45ff88-263f-42a5-8d72-34e5c1ec1af2.png)
 
 
