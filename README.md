@@ -4,7 +4,7 @@ Mouse pusher
 Mouse pusher is a complementary mechanical device for the med-pc operant boxes, to replace manual labor when propelling mice into the experiment arena.  Potentially, by freeing researcher from pushing multiple mice at the same time, the mouse pusher can improve efficiency and accuracy of the procedures and even reduce the audience effect on the mice. This design were tested in the aggression protocol at the Golden Lab UW.  
 
 
-1. wiring diagram of lineaar rail
+1. wiring diagram of linear rail
 
 components list 
 - Arduino uno
@@ -12,8 +12,6 @@ components list
 - Jumper wires
 - linear stage rail ( the one I used is https://www.amazon.com/Linear-Actuator-Stepper-Milling-Machine/dp/B07K7FQ245. You can replact it with other 100m linear stage rails)
 - screws (based on your linear stage rail requirement) 
-
-wiring disgram
 
 
 ![download](https://user-images.githubusercontent.com/50497030/128560163-14e39093-8887-4fcd-acfa-9625174d9f88.jpeg)
