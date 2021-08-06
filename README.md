@@ -14,16 +14,22 @@ components list
 - screws (based on your linear stage rail requirement) 
 
 wiring disgram
+![download](https://user-images.githubusercontent.com/50497030/128560163-14e39093-8887-4fcd-acfa-9625174d9f88.jpeg)
+![L298N-Motor-Driver-Module-Pinout](https://user-images.githubusercontent.com/50497030/128560178-6c45ff88-263f-42a5-8d72-34e5c1ec1af2.png)
+
 
 | Pin Name    | Description |
 | ------------- | ------------- |
 | OUT1 & OUT2  | Output pins of Motor A (A+ to OUT1, A- to OUT2 |
 | OUT3 & OUT4  | Output pins of Motor B (B= to OUT3, B- to OUT2 |
-| 12V          | power supply voltage, if > 12V DC, remove 12V jumper (black jumper in front of the input)|
+| 12V / VCC    | power supply input, if > 12V DC, remove 12V jumper (black jumper in front of the input)|
+| 5V | 5V pin on Arduino |
+| GND | Ground pin |
+| IN1 | pin 8 |
+| IN2 | pin 9 |
+| IN3 | pin 10 |
+| IN4 | pin 11 |
 
-![L298N-Module-Pinout](https://user-images.githubusercontent.com/50497030/128436964-1dd0a23a-eccd-4c7c-91b6-6dd6512e6472.jpg)
-
-![Bipolar-Stepper-L298N](https://user-images.githubusercontent.com/50497030/128436555-d7a2dc30-2050-4410-845c-7aba44faf7d3.jpg)
 
 
 2. arduino and med-pc code  
