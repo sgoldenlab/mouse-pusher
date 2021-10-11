@@ -41,7 +41,7 @@ components list
 | IN3 | pin 10 |
 | IN4 | pin 11 |
 
-## Wiring connecting arduino and Med—PC
+## Wiring connecting arduino and Med-PC
 
 components：
 
