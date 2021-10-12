@@ -86,6 +86,22 @@ we use optocoupler for the step down of the high voltage ttl signal from Med-PC 
 
 ## STL models
 
+![image](https://user-images.githubusercontent.com/50497030/137041128-a610d6ea-29f9-4f08-b11f-2caf876cdedc.png)
+
+![image](https://user-images.githubusercontent.com/50497030/137041403-1e8ee3a2-63fe-48c1-8f98-4784bdcc3fb6.png)
+
+![image](https://user-images.githubusercontent.com/50497030/137041483-8de43241-9a7e-4f55-adcf-a986cec620eb.png)
+
+![image](https://user-images.githubusercontent.com/50497030/137041558-44ffa38b-2391-4ea4-8b80-7dda22fa1aad.png)
+
+![image](https://user-images.githubusercontent.com/50497030/137041558-44ffa38b-2391-4ea4-8b80-7dda22fa1aad.png)
+
+![image](https://user-images.githubusercontent.com/50497030/137041666-0d07f604-e505-4729-899c-7101b521dd7d.png)
+
+![image](https://user-images.githubusercontent.com/50497030/137041767-be8f6b51-c6a9-4284-8371-fbbd8bc764d5.png)
+
+![image](https://user-images.githubusercontent.com/50497030/137041814-e37ff71f-e620-47d1-89ed-c13e351ff50f.png)
+
 
 
 
