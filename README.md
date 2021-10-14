@@ -80,10 +80,18 @@ we use optocoupler for the step down of the high voltage ttl signal from Med-PC 
 
 ### Med-PC code
 
-Add ^Pusher = 14 (or any open output number you have) to Outputs sections,
-then at the codes where you command for output to open the door, add ON ^Pusher
-Same where you command for output to close the door, add OFF ^Pusher
+[Click Here for example for the Med_PC code](https://github.com/sgoldenlab/mouse-pusher/blob/7db21a7be5d829b1ad788d06850c045fe5f82429/MedPc%20code.MPC)
 
+The code above is the Medpc script we used for self-administration aggression study, on the foundation of the original script,
+We added ^Pusher = 14 (or any open output number you have) to Outputs sections,
+then at the codes where you command for output to open the door, we added ON ^Pusher
+Same where you command for output to close the door, we added OFF ^Pusher
+
+Here is the example 
+
+![image](https://user-images.githubusercontent.com/50497030/137405454-39b47aeb-d3a6-4b80-a053-284fa0f7035f.png)
+
+![image](https://user-images.githubusercontent.com/50497030/137405463-d89999f7-9f0e-4cd6-96c3-753f43006969.png)
 
 
 ## STL models
@@ -139,7 +147,7 @@ Solution: if stuck in the middle and not returning to the start position, use po
 
 2. not moving after wiring, often along with strange noise 
 
-Solution: recheck all wiring to see if they are all in place, if they are, check if the right voltage of 
+Solution: recheck all wiring to see if they are all in place, if they are, check if the right voltage of power adapted is connected. If still not solved, check the voltage reading from your mouse pusher script, if the voltage doesn't change to 1023 when you open output 14, it means there is no connection between arduino and medpc, you need to change wire or replug it. 
 
 ## Precautions
 
