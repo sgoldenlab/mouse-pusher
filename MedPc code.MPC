@@ -1,0 +1,464 @@
+\ Trial-based self-administration training with optional footshock punishment
+\ Sam Golden & Conor Heins, April 7, 2016
+\ Reward type: social reward, Fixed-Ratio-(X) Reinforcement Schedule
+\ with compound or unitary conditioned-stimulus (CS) and optional footshock punishment at user-defined probability
+
+\Session Details:
+\----------------
+\Session consists of user-defined number of discrete trials/blocks
+\separated by a user-defined ITI (inter-trial-interval). All session
+\parameters are defined in S.S.1 in array B.
+
+\Trial timeline
+\--------------
+\0 - Wait time of B(X) befores session beings
+\1 - Camera trigger sent via TTL (recording starts)
+\2 - Wait time of B(X) before Houselight ON
+\3 - Wait time of B(X) after Houselight ON before lever extends
+\4 - lever retracts after either
+\    --B(X) seconds after extension
+\    --B(X) seconds after FR criterion is met
+\5 - Cue plays (if FR criterion is met)
+\6 - Punishment delivered (if trial is punished)
+\7 - Houselight OFF B(X) seconds after lever extends
+\8 - Camera turns OFF - B(X) seconds after Houselight OFF
+\9 - Either:
+\    -- Enter ITI of B(X) seconds and entry into next trial
+\    -- End session if Trial # >= Max Trial Number (set in B(X))
+
+\ Constants Used in this Program
+\--------------------------------
+\ Compare the configurations below with the wiring chart supplied
+\ with all system orders.  Edit Input and Output #'s if different
+\ from your layout.
+
+\ Inputs
+\--------
+
+^ActiveFood = 1
+^ActiveSocial= 2
+^InactivePress = 3
+^FoodPort = 4
+^InputTTL = 8
+
+
+\ Outputs
+\---------
+
+^ExtActiveFood = 1
+^ExtActiveSocial = 2
+^PelletDispenser = 10
+^CueLight = 5
+^Speaker = 6
+^DoorOpen = 7
+^Shock = 11
+^Houselight = 4
+^OutputTTL = 15 \Turn ON for desired number of milliseconds to generate pulse
+^camera = 16
+^Pusher = 14 
+
+
+
+
+\Indices for Array A
+\*******************
+^numTrials = 0
+^ShockProb = 1
+^pressRatio = 2
+^trialInd = 3
+^numShocks = 4
+
+
+\Indices for Array B
+\*******************
+^TempSample = 0
+^SessStart = 1
+^HLOn = 2
+^HLOff = 3
+^LeverExt = 4
+^LeverRetr = 5
+^LeverRetrTO = 6
+^DoorON = 7
+^DoorOFF = 8
+^SpeakerON = 9
+^SpeakerOFF = 10
+
+\Indices for Array B
+\*******************
+^TempSample = 0
+^SessStart = 1
+^HLOn = 2
+^HLOff = 3
+^LeverExt = 4
+^LeverRetr = 5
+^LeverRetrTO = 6
+^DoorON = 7
+^DoorOFF = 8
+^SpeakerON = 9
+^SpeakerOFF = 10
+^CueON = 11
+^CueOFF = 12
+^ITI = 13
+^ShockON = 14
+^ShockOFF = 15
+^SessEnd = 16
+^Timer = 17
+^CueON = 11
+^CueOFF = 12
+^ITI = 13
+^ShockON = 14
+^ShockOFF = 15
+^SessEnd = 16
+^Timer = 17
+
+
+
+\Indices for Array Z
+\*******************
+^SessionStart = 0
+^TrialBegin = 1
+^HLOn_Ind = 2
+^HLOff_Ind = 3
+^LeverExt_Ind = 4
+^LeverRetr_Ind = 5
+^DoorON_Ind = 6
+^DoorOFF_Ind = 7
+^SpeakerON_Ind = 8
+^SpeakerOFF_Ind = 9
+^CueON_Ind = 10
+^CueOFF_Ind = 11
+^ActivePress_Ind = 12
+^InactivePress_Ind = 13
+^Beambreak_Ind = 14
+^ShockON_Ind = 15
+^TTLOut_Ind = 17
+^TTLIn_Ind = 18
+^ShockIter = 19
+^PunOrNo = 20
+
+DIM A = 30   \Session parameters
+DIM B = 30   \Trial parameters
+DIM C = 9999 \Trial Begin timestamps
+DIM D = 9999 \Houselight ON timestamps
+DIM E = 9999 \Houselight OFF timestamps
+DIM F = 9999 \Lever Extend timestamps
+DIM G = 9999 \Lever Retract timestamps
+DIM H = 9999 \Door Open timestamps
+DIM I = 9999 \Door Close timestamps
+DIM J = 9999 \Speaker ON timestamps
+DIM K = 9999 \Speaker OFF timestamps
+DIM L = 9999 \Cue ON timestamps
+DIM M = 9999 \Cue OFF timestamps
+DIM N = 9999 \Active press timestamps
+DIM O = 9999 \Inactive press timestamps
+DIM P = 9999 \Beambreak timestamps
+DIM Q = 9999 \Footshock ON timestamps
+DIM S = 6    \Total lever presses and latency counter
+DIM U = 1    \Total rewards
+DIM V = 1    \Total inactive
+DIM W = 1    \Total beambreaks
+DIM X = 9999 \Output TTL pulse start/stop timestamps
+DIM Y = 9999 \Input TTL pulse start/stop timestamps
+DIM Z = 30   \Array of indices for timestamp DIMs
+
+LIST R = 1,0,0,1,1,0,1,1,0,0,1,0,1,0,1,0,1,0,1,0,0
+
+\***********
+\Set Session Parameters
+\***********
+S.S.1,
+S1,
+   0.01":SET A(^numTrials) = 12;
+   SET A(^ShockProb) = 5000; \set probability as [Percentage x 100] (e.g. 50% = 5000)
+   SET A(^pressRatio) = 1;
+   SET A(^trialInd) = 0;
+   SET A(^numShocks) = 0;
+   SET B(^TempSample) = 0.01";
+   SET B(^SessStart) = 1";
+   SET B(^HLOn) = 0";
+   SET B(^HLOff) = 120";
+   SET B(^LeverExt) = 10";
+   SET B(^LeverRetr) = 1.5";
+   SET B(^LeverRetrTO) = 60";
+   SET B(^DoorON) = 2";
+   SET B(^DoorOFF) = 12";
+   SET B(^SpeakerON) = 0";
+   SET B(^SpeakerOFF) = 2";
+   SET B(^CueON) = 0";
+   SET B(^CueOFF) = 2";
+   SET B(^ShockON) = 0";
+   SET B(^ShockOFF) = 0.5";
+   SET B(^ITI) = 120;
+   SET B(^Timer) = 0;
+   SET B(^SessEnd) = 1";
+   SET Z(^ShockIter)=0;
+   SET Z(^PunOrNo) = R(Z(^ShockIter))--->S32
+
+S32,
+   1':--->Sx
+
+\***********
+\ Pre-Session Countdown
+\***********
+
+S.S.2,
+S1,
+    #START:---> S2 \WAITS FOR START COMMAND (ISSUED BY EXPERIMENTER AFTER LOADING BOXES)
+
+S2,
+    B(^SessStart)#T: Z1;--->S32 \COUNTDOWN TO SESSION START ACCORDING TO TIME SET IN B(^SessStart)
+    #Z30:--->S32               \UNLESS IT'S END OF THE SESSION (Z30 PULSE)
+
+S32,
+    1': --->Sx
+    
+
+
+\**********
+\ Global Clock
+S.S.3,
+S1,
+    #Z1:--->S2 \WAITS FOR SESSION TO START BEFORE INCREMENTING GLOBAL CLOCK
+S2,
+\**********
+
+    B(^TempSample)#T:SET T = T + 0.01--->Sx \INCREMENTS T BY ONE TIME-STEP (SET IN B(^TempSample)) EVERY TIME-STEP
+    #Z30:--->S32                \UNLESS IT'S END OF THE SESSION (Z30 PULSE)
+S32,
+    1':--->Sx
+
+
+\**********
+\ Trial Control Code
+\**********
+
+S.S.4,
+S1,
+    #Z1 ! #Z10  : SET C(Z(^TrialBegin)) = T; ADD Z(^TrialBegin); SET C(Z(^TrialBegin))= -987.987; ADD A(^trialInd); SHOW 1,Trial:,A(^trialInd)--->S2 \EITHER FIRST TRIAL (SIGNALLED BY Z1 PULSE) OR END OF TRIAL'S ITI (SIGNALLED BY Z9 PULSE)
+    #Z30:--->S32
+S2,
+    B(^HLOn)#T:Z2--->S3 \ TRIGGERS HOUSELIGHT TO TURN ON VIA Z2 PULSE
+    #Z30:--->S32
+
+S3,
+    B(^LeverExt)#T:Z3--->S4 \ TRIGGERS LEVER TO EXTEND VIA Z3 PULSE
+    #Z30:--->S32
+S4,
+    #Z9:SET B(^Timer) = B(^ITI)--->S5 \WAITS FOR HOUSELIGHT OFF AND SETS ITI COUNTDOWN (Z9 PULSE FROM S.S.4, WHICH TURNS OFF HOUSELIGHT)
+    #Z30:--->S32
+S5,
+    B(^TempSample)#T: SHOW 6, NEXT TRIAL IN:, B(^Timer); SET B(^Timer)=B(^Timer)-0.01;
+        IF B(^Timer) <= 0 [@True, @False]
+            @True: SET B(^Timer) = B(^ITI); ON ^OutputTTL; SET X(Z(^TTLOut_Ind))=T; ADD Z(^TTLOut_Ind); SET X(Z(^TTLOut_Ind))=-987.987;Z10;Z32--->S1
+            @False:SHOW 6, NEXT TRIAL IN:, B(^Timer)--->S5
+    #Z30:--->S32
+S32,
+    1':--->Sx
+
+\***********
+\ Houselight Wait Period
+\***********
+
+S.S.5,
+S1,
+    #Z2:ON ^Houselight; ON ^camera; SET D(Z(^HLOn_Ind)) = T; ADD Z(^HLOn_Ind); SET D(Z(^HLOn_Ind))=-987.987; SHOW 2, HOUSELIGHT ON, (D(Z(^HLOn_Ind)-1)-C(Z(^TrialBegin)-1))--->S2
+    #Z30:--->S32
+
+S2,
+    B(^HLOff)#T: OFF ^Houselight; OFF ^camera ;SET E(Z(^HLOff_Ind)) = T; ADD Z(^HLOff_Ind); SET E(Z(^HLOff_Ind))=-987.987; Z9--->S1
+    #Z30:--->S32
+
+S32,
+    1':--->Sx
+
+
+\**********
+\ Lever Extension Period/Display & Record Active Lever Presses and their Latencies
+\**********
+
+S.S.6,
+S1,
+    #Z3: ON ^ExtActiveSocial; SET F(Z(^LeverExt_Ind)) = T; ADD Z(^LeverExt_Ind); SET F(Z(^LeverExt_Ind))=-987.987; SHOW 3, LEVER OUT, (F(Z(^LeverExt_Ind)-1)-D(Z(^HLOn_Ind)-1)); Z4 --->S2
+    #Z30:--->S32
+
+S2,
+    #R^ActiveSocial:SET N(Z(^ActivePress_Ind)) = T; ADD Z(^ActivePress_Ind); SET N(Z(^ActivePress_Ind)) = -987.987; ADD S(0)--->S3
+    B(^LeverRetrTO)#T: Z11; OFF ^ExtActiveSocial; SET G(Z(^LeverRetr_Ind)) = T; ADD Z(^LeverRetr_Ind);SET G(Z(^LeverRetr_Ind)) = -987.987; SET S(1)=S(1)+G(Z(^LeverRetr_Ind)-1)-F(Z(^LeverExt_Ind)-1);
+    SET S(2)=S(1)/A(^trialInd); SET S(3) = G(Z(^LeverRetr_Ind)-1)-F(Z(^LeverExt_Ind)-1); Z4 --->S1
+    #Z30:--->S32
+
+S3,
+    #R^ActiveSocial:SET N(Z(^ActivePress_Ind)) = T; ADD Z(^ActivePress_Ind); SET N(Z(^ActivePress_Ind)) = -987.987; ADD S(0)--->Sx
+    #Z5 ! #Z6 ! #Z7 ! #Z7 ! #Z8 ! #Z10 ! #Z11:--->S1
+    #Z30:--->S32
+
+S32,
+    1':--->Sx
+
+
+\**********
+\Check for FR satisfaction
+\**********
+
+S.S.7,
+S1,
+    #Z4:--->S2
+    #Z30:--->s32
+S2,
+    #Z5 ! #Z6 ! #Z7 ! #Z7 ! #Z8 ! #Z10 ! #Z11:--->S1
+    A(^pressRatio)#R^ActiveSocial: ADD U(0);z5;z6;z7;z8; SET S(1)=S(1)+N(Z(^ActivePress_Ind)-1)-F(Z(^LeverExt_Ind)-1); SET S(2)=S(1)/A(^trialInd); SET S(3) = N(Z(^ActivePress_Ind)-1)-F(Z(^LeverExt_Ind)-1);
+    SET S(4) = S(4)+N(Z(^ActivePress_Ind)-1)-F(Z(^LeverExt_Ind)-1); SET S(5) = S(4)/S(0)--->S1
+    #Z30:--->S32
+S32,
+    1':--->Sx
+
+
+\**********
+\ Countdown to Lever Retraction Period
+\**********
+
+S.S.8,
+S1,
+    #Z5:--->S2
+    #Z30:--->S32
+
+S2,
+    B(^LeverRetr)#T:Z11;OFF ^ExtActiveSocial; SET G(Z(^LeverRetr_Ind)) = T; ADD Z(^LeverRetr_Ind); SET G(Z(^LeverRetr_Ind)) = -987.987--->S1
+
+    #Z30:--->S32
+
+S32,
+    1':--->Sx
+
+
+\**********
+\ Conditioned Stimulus (CS) ON Period
+\**********
+
+S.S.9,
+S1,
+    #Z6:--->S2
+    #Z30:--->S32
+S2,
+    B(^SpeakerON)#T: ON ^Speaker; SET J(Z(^SpeakerON_Ind)) = T; ADD Z(^SpeakerON_Ind); SET J(Z(^SpeakerON_Ind))=-987.987--->S3
+    #Z30:--->S32
+S3,
+    B(^SpeakerOFF)#T: OFF ^Speaker; SET K(Z(^SpeakerOFF_Ind)) = T; ADD Z(^SpeakerOFF_Ind); SET K(Z(^SpeakerOFF_Ind))=-987.987--->S1
+    #Z30:--->S32
+S32,
+    1':--->Sx
+
+
+\**********
+\ Reward Delivery Period
+\**********
+
+S.S.10,
+S1,
+    #Z7:--->S2
+    #Z30:--->S32
+S2,
+    B(^DoorON)#T: ON ^DoorOpen; ON ^Pusher; SET H(Z(^DoorON_Ind))=T; ADD Z(^DoorON_Ind); SET H(Z(^DoorON_Ind))=-987.987--->S3
+    #Z30:--->S32
+S3,
+    B(^DoorOFF)#T: OFF ^DoorOpen; OFF ^Pusher; SET I(Z(^DoorOFF_Ind))=T; ADD Z(^DoorOFF_Ind); SET I(Z(^DoorOFF_Ind))=-987.987--->S1
+    #Z30:--->S32
+S32,
+    1':--->Sx
+
+
+\**********
+\ Shock Punishment Period  SWITCH FROM ON to OFF ^SHOCK IN S2 IF YOU WANT TO DO NORMAL SELFADMIN
+\**********
+
+S.S.11,
+S1,
+    #Z8:--->S2
+    #Z30:--->S32
+S2,
+    B(^ShockON)#T: if Z(^PunOrNo)=1 [@pun, @unpun]
+        @pun:OFF ^Shock; ADD Z(^ShockIter); SET Z(^PunOrNo) = R(Z(^ShockIter)); SET Q(Z(^ShockON_Ind))=T; ADD Z(^ShockON_Ind); SET Q(Z(^ShockON_Ind))=-987.987; ADD A(^numShocks); SHOW 6, SHOCKED TRIAL, A(^trialInd);
+        SHOW 9, TOTAL SHOCKS, A(^numShocks)--->S3
+        @unpun: ADD Z(^ShockIter); SET Z(^PunOrNo) = R(Z(^ShockIter)); SET Q(Z(^ShockON_Ind))=0; ADD Z(^ShockON_Ind); SET Q(Z(^ShockON_Ind)) = -987.987--->S1
+    #Z30:--->S32
+S3,
+    B(^ShockOFF)#T: OFF ^Shock--->S1
+    #Z30:--->S32
+S32,
+    1':--->Sx
+
+
+\**********
+\Record Inactive Lever Presses
+\**********
+
+S.S.12,
+S1,
+   #R^InactivePress:ADD V(0); SET O(Z(^InactivePress_Ind))=T; ADD Z(^InactivePress_Ind); SET Q(Z(^InactivePress_Ind)) = -987.987--->Sx
+   #Z30:--->S32
+S32,
+   1':--->Sx
+
+\**********
+\Record Beambreaks
+\**********
+
+S.S.13,
+S1,
+   #R^Foodport:ADD W(0); SET P(Z(^Beambreak_Ind))=T; ADD Z(^Beambreak_Ind); SET P(Z(^Beambreak_Ind))=-987.987--->Sx
+   #Z30:--->S32
+S32,
+   1':--->Sx
+
+\**********
+\Check for last trial
+\**********
+
+S.S.14,
+S1,
+   #Z10: IF A(^trialInd) > A(^numTrials) [@end, @continue]
+    @end: ---> S2
+    @continue:--->Sx
+   #Z30:--->S32
+
+S2,
+   B(^SessEnd)#T: Z30--->STOPABORTFLUSH
+   #Z30:--->S32
+
+S32,
+   1':--->Sx
+
+\*********
+\Camera Trigger OUT/CLIPS ALL ARRAYS AT LAST ELEMENT
+\*********
+S.S.31
+S1,
+  #Z32: SET H(Z(^DoorON_Ind))=-987.987;SET I(Z(^DoorOFF_Ind))=-987.987;SET J(Z(^SpeakerON_Ind))=-987.987;SET K(Z(^SpeakerOFF_Ind))=-987.987;
+  SET L(Z(^CueON_Ind))=-987.987;SET M(Z(^CueOFF_Ind))=-987.987; SET N(Z(^ActivePress_Ind))=-987.987;SET O(Z(^InactivePress_Ind))=-987.987;
+  SET P(Z(^Beambreak_Ind))=-987.987; SET Q(Z(^ShockON_Ind))=-987.987; SET X(Z(^TTLOut_Ind))=-987.987;
+  SET Y(Z(^TTLIn_Ind))=-987.987--->S2
+
+S2,
+  0.15": OFF^ OutputTTL; SET X(Z(^TTLOut_Ind))=T; ADD Z(^TTLOut_Ind); SET X(Z(^TTLOut_Ind))=-987.987--->S1
+  #Z30: ---> S32
+
+S32,
+  1': --->SX
+
+\*********
+\Update display
+\*********
+S.S.32,
+S1,
+   #Z1: SHOW 1, CURRENT TRIAL, A(^trialInd), 2, REWARDS, U(0), 3, ACTIVE PRESSES, S(0), 4, INACTIVE PRESSES, V(0), 5, BEAMBREAKS, W(0), 7, AVG LATENCY, S(5), 8, TRIAL LATENCY, S(3)--->S2
+S2,
+   1": SHOW 1, CURRENT TRIAL, A(^trialInd), 2, REWARDS, U(0), 3, ACTIVE PRESSES, S(0), 4, INACTIVE PRESSES, V(0), 5, BEAMBREAKS, W(0), 7, AVG LATENCY, S(5), 8, TRIAL LATENCY, S(3)---> S2
+   #Z30: ---> S32
+
+S32,
+   1': --->Sx
+
+
+
+
+
