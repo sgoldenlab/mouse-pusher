@@ -87,11 +87,13 @@ We added ^Pusher = 14 (or any open output number you have) to Outputs sections,
 then at the codes where you command for output to open the door, we added ON ^Pusher
 Same where you command for output to close the door, we added OFF ^Pusher
 
-Here is the example 
+Here are the examples clipped from the script above: 
+
+![image](https://user-images.githubusercontent.com/50497030/137405463-d89999f7-9f0e-4cd6-96c3-753f43006969.png)
 
 ![image](https://user-images.githubusercontent.com/50497030/137405454-39b47aeb-d3a6-4b80-a053-284fa0f7035f.png)
 
-![image](https://user-images.githubusercontent.com/50497030/137405463-d89999f7-9f0e-4cd6-96c3-753f43006969.png)
+
 
 
 ## STL models
