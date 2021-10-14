@@ -61,19 +61,19 @@ we use optocoupler for the step down of the high voltage ttl signal from Med-PC 
 
 #### Operant box trial script 
 
-  https://github.com/sgoldenlab/mouse-pusher/blob/522724d3c4da9a7dc0e854c799d4fd747f263456/Arduino%20Scripts/Trial_script.ino/Trial_script.ino.ino
+  [Click here for Operant Box Trial Script](https://github.com/sgoldenlab/mouse-pusher/blob/522724d3c4da9a7dc0e854c799d4fd747f263456/Arduino%20Scripts/Trial_script.ino/Trial_script.ino.ino)
 
   This script is for running the actual operant box trials, detailed explanation in the script file, might need small modification to fit your specific trials. 
 
 #### Linear stage position adjustment script
 
-  https://github.com/sgoldenlab/mouse-pusher/blob/522724d3c4da9a7dc0e854c799d4fd747f263456/Arduino%20Scripts/Position_adjustment_script.ino/Position_adjustment_script.ino.ino
+  [Click here for Linear stage position adjustment script](https://github.com/sgoldenlab/mouse-pusher/blob/522724d3c4da9a7dc0e854c799d4fd747f263456/Arduino%20Scripts/Position_adjustment_script.ino/Position_adjustment_script.ino.ino)
 
   This script can be used to move the stage to the preferred starting position, or if stalling problem happens, can be used to do some quick testing for the specific reason for stalling
 
 #### Testloop script 
 
-  https://github.com/sgoldenlab/mouse-pusher/blob/522724d3c4da9a7dc0e854c799d4fd747f263456/Arduino%20Scripts/Testloop_script.ino/Testloop_script.ino.ino
+  [Click here for testloop script](https://github.com/sgoldenlab/mouse-pusher/blob/522724d3c4da9a7dc0e854c799d4fd747f263456/Arduino%20Scripts/Testloop_script.ino/Testloop_script.ino.ino)
 
   We used this script to test if the wired pusher set is stable before installing it on the opearnt box. This script is optional but we found it useful to prevent the hassel of fixing it after the set being attached to the opearnt box. 
 
