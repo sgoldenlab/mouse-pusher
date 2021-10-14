@@ -137,7 +137,7 @@ Solution: if stuck in the middle and not returning to the start position, use po
 
 2. not moving after wiring, often along with strange noise 
 
-Solution: 
+Solution: recheck all wiring to see if they are all in place, if they are, check if the right voltage of 
 
 ## Precautions
 
