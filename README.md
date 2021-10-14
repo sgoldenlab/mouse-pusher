@@ -78,10 +78,10 @@ we use optocoupler for the step down of the high voltage ttl signal from Med-PC 
 
 ### Med-PC code
 
+Add ^Pusher = 14 (or any open output number you have) to Outputs sections,
+then at the codes where you command for output to open the door, add ON ^Pusher
+Same where you command for output to close the door, add OFF ^Pusher
 
-
-```
-```
 
 
 ## STL models
@@ -116,19 +116,31 @@ This is the second detachable bottom of the two, they can be fitted together int
 
 The pusher plate is going to be attached onto the pole, the side with shorter legs being the inward side. 
 
-
+### Supporting Foundation
 
 ![image](https://user-images.githubusercontent.com/50497030/137041767-be8f6b51-c6a9-4284-8371-fbbd8bc764d5.png)
 
+This structure is being attached to the operant box under the chamber. the vertical thin flat surface can be fit in the same gap we use to attach the chamber body. the supporting foundation would make all the chamber body be on the same height and restrict unnecessary movement of the linear rail. Depends on the stability of your operant box, the support foundation might still be able to move around a lot, you can use tape to secure the side to the operant box. (If linear rail not the same dimensions, modification would be needed)
+
+### rotate block
+
 ![image](https://user-images.githubusercontent.com/50497030/137041814-e37ff71f-e620-47d1-89ed-c13e351ff50f.png)
 
-
+The rotate block is a 2 piece structure that would be fitted together through the round hole on the chamber body, when putting down after the divider is in, it would prevent the divider being moved out by the mice. 
 
 
 ## Common problems
 
+1. linear stage rail moves, causing the pusher plate or pole getting stuck by the chamber or other structure around the operant box. 
 
+Solution: if stuck in the middle and not returning to the start position, use position adjustment script to return the stage back into starting position, and check for broken components, replace if needed. 
+
+2. not moving after wiring, often along with strange noise 
+
+Solution: 
 
 ## Precautions
 
 Turning off when not using, especially before closing operant box, turning of operant box first will lead to all boxes push forward because the voltage change by the optocoupler 
+
+Our advice is to have some backup parts because before everything is properly installed and stablized, it might be very easy to break thin parts like poles and rotate block. 
