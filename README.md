@@ -15,7 +15,7 @@ For each mouse pusher, we need the following components below:
 #### Components list 
 - Arduino Uno
 - L298N Motor Driver
-- Linear Stage Rail ( the one I used is https://www.amazon.com/Linear-Actuator-Stepper-Milling-Machine/dp/B07K7FQ245. You can replact it with other 100m linear stage rails)
+- [Linear Stage Rail](https://www.amazon.com/Linear-Actuator-Stepper-Milling-Machine/dp/B07K7FQ245)
 - Screws (based on your linear stage rail requirement) 
 - 24V Power Adapter (for the stepper motor, might be different depends on the motor you have)
 - 9V Power Adapter (for powering arduino separately) 
