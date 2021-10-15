@@ -75,7 +75,7 @@ we use optocoupler for the step down of the high voltage ttl signal from Med-PC 
 
   [Click here for testloop script](https://github.com/sgoldenlab/mouse-pusher/blob/522724d3c4da9a7dc0e854c799d4fd747f263456/Arduino%20Scripts/Testloop_script.ino/Testloop_script.ino.ino)
 
-  We used this script to test if the wired pusher set is stable before installing it on the opearnt box. This script is optional but we found it useful to prevent the hassel of fixing it after the set being attached to the opearnt box. 
+  We use this script to test if the wired pusher set is stable before installing it on the opearnt box. This script is optional but we found it useful to prevent the hassel of fixing it after the set being attached to the opearnt box. 
 
 
 ### Med-PC code
@@ -149,11 +149,11 @@ The rotate block is a 2 piece structure that would be fitted together through th
 
 ## Common problems
 
-1. linear stage rail moves, causing the pusher plate or pole getting stuck by the chamber or other structure around the operant box. 
+1. Linear stage rail moves, causing the pusher plate or pole getting stuck by the chamber or other structure around the operant box. 
 
 Solution: if stuck in the middle and not returning to the start position, use position adjustment script to return the stage back into starting position, and check for broken components, replace if needed. 
 
-2. not moving after wiring, often along with strange noise 
+2. Not moving after wiring, often along with strange noise 
 
 Solution: recheck all wiring to see if they are all in place, if they are, check if the right voltage of power adapted is connected. If still not solved, check the voltage reading from your mouse pusher script, if the voltage doesn't change to 1023 when you open output 14, it means there is no connection between arduino and medpc, you need to change wire or replug it. 
 
