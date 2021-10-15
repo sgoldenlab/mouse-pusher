@@ -96,49 +96,55 @@ Here are the examples clipped from the script above:
 
 
 
-## STL models
+## STL Models
 
-### Chamber Body 
+[Click here to see display model for all components](https://github.com/sgoldenlab/mouse-pusher/blob/f5dbb41cf96dbcc75a5999b4762720fb7c1067de/STL%20files/Display.stl)
+
+### [Chamber Body](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/chamber.stl) 
 
 ![image](https://user-images.githubusercontent.com/50497030/137041128-a610d6ea-29f9-4f08-b11f-2caf876cdedc.png)
 
 The chamber body would be the structure to contain the mice before they are pushed into the operant box, it can contain two mice at a time so the intruder mice can rotate and not getting thrown into the arean as frequently. 
 
-### Pole
+### [Pole](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/pole.stl)
 
 ![image](https://user-images.githubusercontent.com/50497030/137041403-1e8ee3a2-63fe-48c1-8f98-4784bdcc3fb6.png)
 
 The pole is attached to the linear stage, through screw in the four holes, the side with longer side being towards the back of the linear stage. Modification might be needed if the stage has different dimensions.
 
-### Bottom 1 
+### [Bottom 1](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/bottom1.stl) 
 
 ![image](https://user-images.githubusercontent.com/50497030/137041483-8de43241-9a7e-4f55-adcf-a986cec620eb.png)
 
 This is the first detachable bottom of the two, they can be fitted together into the gap at the bottom of the chamber 
 
-### Bottom 2
+### [Bottom 2](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/bottoms2.stl)
 
 ![image](https://user-images.githubusercontent.com/50497030/137041558-44ffa38b-2391-4ea4-8b80-7dda22fa1aad.png)
 
 This is the second detachable bottom of the two, they can be fitted together into the gap at the bottom of the chamber. We have designed the bottoms to be thinner and narrower than the gap of the chamber, but due to 3d printer's accuracy, it might still be hard to fit in or remove them. The little wedge on the second bottom can help you grip it better, and makes it easier to remove this bottome first. If hand strength not enough, please try a plier. If still not fitting correctly, some decrease in width and length might be needed. 
 
-### Pusher plate 
+### [Pusher Plate](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/pusherplate.stl) 
 
 ![image](https://user-images.githubusercontent.com/50497030/137041666-0d07f604-e505-4729-899c-7101b521dd7d.png)
 
 The pusher plate is going to be attached onto the pole, the side with shorter legs being the inward side. 
 
-### Supporting Foundation
+### [Supporting Foundation](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/supportU.stl)
 
 ![image](https://user-images.githubusercontent.com/50497030/137041767-be8f6b51-c6a9-4284-8371-fbbd8bc764d5.png)
 
 This structure is being attached to the operant box under the chamber. the vertical thin flat surface can be fit in the same gap we use to attach the chamber body. the supporting foundation would make all the chamber body be on the same height and restrict unnecessary movement of the linear rail. Depends on the stability of your operant box, the support foundation might still be able to move around a lot, you can use tape to secure the side to the operant box. (If linear rail not the same dimensions, modification would be needed)
 
-### rotate block
+### [Rotate Block](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/rotate.stl)
 
 ![image](https://user-images.githubusercontent.com/50497030/137041814-e37ff71f-e620-47d1-89ed-c13e351ff50f.png)
 
 The rotate block is a 2 piece structure that would be fitted together through the round hole on the chamber body, when putting down after the divider is in, it would prevent the divider being moved out by the mice. 
+
+### [Divider](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/Divider.stl) 
+
+
 
 
 ## Common problems
