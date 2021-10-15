@@ -45,14 +45,14 @@ For each mouse pusher, we need the following components below:
 
 ## Wiring connecting arduino and Med-PC
 
-components：
+#### Components：
 
 - 24V to 5V Optocoupler ( I used 8 channel ones for every 6 of the wire set, you can buy any type of optocoupler that suits best for your project requirement)  
 - 5V power adapter 
-- wire
-- electrical tape
+- Wire
+- Electrical tape
 
-we use optocoupler for the step down of the high voltage ttl signal from Med-PC to protect arduino from frying. 
+Optocoupler is used to step down the high voltage ttl signal from Med-PC to protect Arduino from frying. 
 
 ## Code
 
