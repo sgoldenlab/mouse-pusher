@@ -43,6 +43,39 @@ For each mouse pusher, we need the following components below:
 | IN3 | pin 10 |
 | IN4 | pin 11 |
 
+### Step by Step assembling instruction 
+
+Step 1: braid the wires from the linear stage rail 
+
+<img src="https://user-images.githubusercontent.com/50497030/138615670-2cf6880b-ed0a-4ae4-b546-1769269f8538.jpg" width="400">
+
+Step 2: wrap electrical tape around the wire for protection
+
+<img src="https://user-images.githubusercontent.com/50497030/138615680-c3180e80-be2a-4978-aebc-22f3c6b40e58.jpg" width="400">
+
+step 3: take out two sets of two male to male jumper wires, and a set of four male to female jumper wires.
+
+<img src="https://user-images.githubusercontent.com/50497030/138615685-8e5d5677-6a1e-4e28-a62e-01c958479217.jpg" width="400">
+
+step 4: wrap electrical tapes around jumper wires, we color coded them to distinguish different sets.
+
+<img src="https://user-images.githubusercontent.com/50497030/138615693-9c2e86de-b301-4c00-8ed2-e4164efcf623.jpg" width="400">
+
+step 5: connect wires to l298N motor driver according to the table above 
+
+<img src="https://user-images.githubusercontent.com/50497030/138615701-b737ff1d-0278-413b-b7e6-509923d78273.jpg" width="400">
+
+step 6: connect wires to arduino according to the table above
+
+<img src="https://user-images.githubusercontent.com/50497030/138615715-e3d7953f-d147-4428-8d92-190f552e6aaa.jpg" width="400">
+
+step 7: connect the wire from 12V+ port from L298N to the positive on the adapter, and the ground to the negative on the adapter.
+
+<img src="https://user-images.githubusercontent.com/50497030/138615719-f7693209-9a56-4a2f-9bb9-c5d65410ab39.jpg" width="400">
+
+step 8: plug in 24V to L298N power adapter and 9V to arduino 
+
+
 ## Wiring connecting arduino and Med-PC
 
 #### Components：
