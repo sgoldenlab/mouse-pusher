@@ -1,6 +1,6 @@
 # Mouse Pusher 
 
-Mouse pusher is a complementary mechanical device for the med-pc operant boxes, to replace manual labor when propelling mice into the experiment arena.  Potentially, by freeing researcher from pushing multiple mice at the same time, the mouse pusher can improve efficiency and accuracy of the procedures and even reduce the audience effect on the mice. This design were tested in the aggression protocol at the Golden Lab UW.  
+Mouse pusher is a complementary mechanical device for the med-pc operant boxes, to replace manual labor when propelling mice into the experiment arena.  Potentially, by freeing researcher from pushing multiple mice at the same time, the mouse pusher can improve efficiency and accuracy of the procedures and even reduce the audience effect on the mice. This design were tested in the aggression protocol at the Golden Lab UW. This is designed for extra 
 
 ## Demonstration video 
 
@@ -45,6 +45,8 @@ For each mouse pusher, we need the following components below:
 
 ### Step by Step assembling instruction 
 
+For a single set, you need 1 linear stage rail, 1 arduino, 1 L298N, 4 M/M jumper wires, 4 M/F jumper wires, 1 9V power adapter, and 1 24V power adapter (with connector tip) 
+
 Step 1: braid the wires from the linear stage rail 
 
 <img src="https://user-images.githubusercontent.com/50497030/138615670-2cf6880b-ed0a-4ae4-b546-1769269f8538.jpg" width="400">
@@ -69,12 +71,13 @@ step 6: connect wires to arduino according to the table above
 
 <img src="https://user-images.githubusercontent.com/50497030/138615715-e3d7953f-d147-4428-8d92-190f552e6aaa.jpg" width="400">
 
-step 7: connect the wire from 12V+ port from L298N to the positive on the adapter, and the ground to the negative on the adapter.
+step 7: connect the wire from 12V+ port from L298N to the positive on the adapter connector, and the ground to the negative on the adapter connector.
 
 <img src="https://user-images.githubusercontent.com/50497030/138615719-f7693209-9a56-4a2f-9bb9-c5d65410ab39.jpg" width="400">
 
-step 8: plug in 24V to L298N power adapter and 9V to arduino 
+step 8: plug in 24V to L298N power adapter and 9V to arduino uno. 
 
+Tp test the linear stage rail, use position adjustment script moving the stage to desired starting position, and use trial loop script to test stability for 10 minutes.
 
 ## Wiring connecting arduino and Med-PC
 
@@ -85,7 +88,9 @@ step 8: plug in 24V to L298N power adapter and 9V to arduino
 - Wire
 - Electrical tape
 
-Optocoupler is used to step down the high voltage ttl signal from Med-PC to protect Arduino from frying. 
+<img src="https://user-images.githubusercontent.com/50497030/139489643-aeb9776c-b596-40d4-9e5f-3b01017de259.jpg" width="400">
+
+Optocoupler is used to step down the high voltage ttl signal from Med-PC to protect Arduino from frying. the signal output would go to Analog port on arduino (we used A3), and negative goes to the second ground on arduino.
 
 ## Code
 
@@ -131,7 +136,7 @@ Here are the examples clipped from the script above:
 
 ## STL Models
 
-[Click here to see display model for all components](https://github.com/sgoldenlab/mouse-pusher/blob/f5dbb41cf96dbcc75a5999b4762720fb7c1067de/STL%20files/Display.stl)
+[Click here to see display model for all components together](https://github.com/sgoldenlab/mouse-pusher/blob/f5dbb41cf96dbcc75a5999b4762720fb7c1067de/STL%20files/Display.stl)
 
 ### [Chamber Body](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/chamber.stl) 
 
