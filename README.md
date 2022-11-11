@@ -136,7 +136,7 @@ Here are the examples clipped from the script above:
 
 ## STL Models
 
-[Click here to see display model for all components together](https://github.com/sgoldenlab/mouse-pusher/blob/f5dbb41cf96dbcc75a5999b4762720fb7c1067de/STL%20files/Display.stl)
+[Click here to see display model for all components together](https://github.com/sgoldenlab/mouse-pusher/blob/main/STL%20files/assemble.stl)
 
 ### [Chamber Body](https://github.com/sgoldenlab/mouse-pusher/blob/main/STL%20files/chamber.stl) 
 
