@@ -207,3 +207,5 @@ Solution: recheck all wiring to see if they are all in place, if they are, check
 Turning off when not using, especially before closing operant box, turning of operant box first will lead to all boxes push forward because the voltage change by the optocoupler 
 
 Our advice is to have some backup parts because before everything is properly installed and stablized, it might be very easy to break thin parts like poles and rotate block. 
+
+#### Warning: Divider must be properly locked in and not able to be lodged off, or mice can possibly be serioudly injured. 
