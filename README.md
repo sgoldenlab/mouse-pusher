@@ -140,13 +140,13 @@ Here are the examples clipped from the script above:
 
 ### [Chamber Body](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/chamber.stl) 
 
-<img src="https://user-images.githubusercontent.com/50497030/137041128-a610d6ea-29f9-4f08-b11f-2caf876cdedc.png" width="400">
+<img src="https://user-images.githubusercontent.com/50497030/201439341-cf16a5ae-0476-43fc-8090-bc8a9c209e5b.png" width="400">
 
-The chamber body would be the structure to contain the mice before they are pushed into the operant box, it can contain two mice at a time so the intruder mice can rotate and not getting thrown into the arean as frequently. 
+The chamber body would be the structure to contain the mice before they are pushed into the operant box, it can contain two mice at a time so the intruder mice can rotate and not getting thrown into the arean as frequently.
 
 ### [Pole](https://github.com/sgoldenlab/mouse-pusher/blob/b585bb12850828008785d5a96545670da8c36cad/STL%20files/pole.stl)
 
-<img src="https://user-images.githubusercontent.com/50497030/137041403-1e8ee3a2-63fe-48c1-8f98-4784bdcc3fb6.png" width="400">
+<img src="https://user-images.githubusercontent.com/50497030/201439601-854bb2e2-151c-40cc-80f9-ec5f8586952c.png" width="400">
 
 The pole is attached to the linear stage, through screw in the four holes, the side with longer side being towards the back of the linear stage. Modification might be needed if the stage has different dimensions.
 
